@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FO.TaskFlow | إدارة المهام</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">✓</span><span>TaskFlow</span></a>
+      <div class="profile">
+        <div class="avatar">م</div>
+        <div><strong>مرحبًا بك</strong><small>مساحة عملك الشخصية</small></div>
+      </div>
+      <p class="nav-label">القائمة الرئيسية</p>
+      <button class="nav-item active" data-filter="all"><span>▦</span> كل المهام <b id="allCount">0</b></button>
+      <button class="nav-item" data-filter="active"><span>◷</span> قيد التنفيذ <b id="activeCount">0</b></button>
+      <button class="nav-item" data-filter="completed"><span>✓</span> مكتملة <b id="completedCount">0</b></button>
+      <div class="sidebar-tip"><span class="tip-icon">✦</span><strong>نصيحة اليوم</strong><p>قسّم المهام الكبيرة إلى خطوات صغيرة لتنجزها بسهولة.</p></div>
+      <small class="sidebar-footer">TaskFlow · تنظيم أفضل ليومك</small>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div><p class="eyebrow">مساحة العمل / لوحة التحكم</p><h1>إدارة المهام</h1><p class="subtitle">نظّم يومك، وتابع تقدمك، وأنجز أهدافك.</p></div>
+        <div class="date-pill" id="todayDate">اليوم</div>
+      </header>
+
+      <section class="stats">
+        <article class="stat-card"><div class="stat-icon purple">▦</div><div><span>إجمالي المهام</span><strong id="totalStat">0</strong></div><small>كل ما تخطط لإنجازه</small></article>
+        <article class="stat-card"><div class="stat-icon orange">◷</div><div><span>قيد التنفيذ</span><strong id="activeStat">0</strong></div><small>مهام تنتظر إنجازك</small></article>
+        <article class="stat-card"><div class="stat-icon green">✓</div><div><span>المهام المكتملة</span><strong id="doneStat">0</strong></div><small>خطوات أنجزتها بنجاح</small></article>
+      </section>
+
+      <section class="progress-panel">
+        <div class="progress-copy"><div><strong>تقدمك اليوم</strong><p>استمر، كل مهمة صغيرة تصنع فرقًا.</p></div><strong id="progressPercent">0%</strong></div>
+        <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+      </section>
+
+      <section class="tasks-section">
+        <div class="section-heading"><div><h2>قائمة المهام</h2><p>أضف مهامك وحدد أولوياتك.</p></div><button class="primary-btn" id="openFormBtn">＋ إضافة مهمة</button></div>
+        <div class="toolbar">
+          <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="ابحث عن مهمة..." /></label>
+          <select id="priorityFilter" aria-label="تصفية حسب الأولوية"><option value="all">كل الأولويات</option><option value="high">عالية</option><option value="medium">متوسطة</option><option value="low">منخفضة</option></select>
+        </div>
+        <form id="taskForm" class="task-form hidden">
+          <div class="form-title"><strong id="formHeading">إضافة مهمة جديدة</strong><button type="button" class="icon-btn" id="closeFormBtn" aria-label="إغلاق">×</button></div>
+          <label>اسم المهمة<input id="taskTitle" required maxlength="100" placeholder="مثال: مراجعة دروس البرمجة" /></label>
+          <label>تفاصيل المهمة<textarea id="taskDescription" rows="2" maxlength="250" placeholder="اكتب تفاصيل مختصرة (اختياري)"></textarea></label>
+          <div class="form-row"><label>الأولوية<select id="taskPriority"><option value="medium">متوسطة</option><option value="high">عالية</option><option value="low">منخفضة</option></select></label><label>تاريخ الاستحقاق<input id="taskDue" type="date" /></label></div>
+          <div class="form-actions"><button type="button" class="secondary-btn" id="cancelBtn">إلغاء</button><button type="submit" class="primary-btn">حفظ المهمة</button></div>
+        </form>
+        <div id="taskList" class="task-list"></div>
+        <div id="emptyState" class="empty-state hidden"><div class="empty-illustration">✓</div><strong>لا توجد مهام هنا</strong><p>أضف مهمة جديدة أو غيّر خيارات البحث والتصفية.</p><button class="secondary-btn" id="emptyAddBtn">إضافة أول مهمة</button></div>
+      </section>
+      <footer>صُمم بعناية لتنظيم المهام اليومية <span>✦</span></footer>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
